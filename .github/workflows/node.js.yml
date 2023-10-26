@@ -3,30 +3,31 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # Change this to your main branch name
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 18
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14 # Use the Node.js version your Angular project requires
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build Angular project
-      run: npm run build --prod
+      - name: Build the project
+        run: npm run build # Adjust this command to match your Angular project's build script
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.SGITHUB_TOKEN }}
-        publish_dir: ./dist/ecom-admin-panel
-        publish_branch: gh-pages
+      - name: Deploy to GitHub Pages
+        run: |
+          if [ -z "${GITHUB_TOKEN}" ]; then
+            echo "Set the GITHUB_TOKEN secret in your repository."
+            exit 1
+          fi
+          npx angular-cli-ghpages --dir=dist/ecom-admin-panel # Replace with your app name
