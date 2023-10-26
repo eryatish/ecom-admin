@@ -30,8 +30,8 @@ jobs:
             echo "Set the GITHUB_TOKEN secret in your repository."
             exit 1
           fi
-          git config --global user.email "er.yatish@gmail.com"
-          # git config --global user.name "eryatish"
+          git config user.email "er.yatish@gmail.com"
+          git config user.name "eryatish"
           # git config --global credential.helper store
           # echo ${GITHUB_ACTIONS}
           # git remote add origin https://username:${{secrets.GITHUB_TOKEN}}@github.com/username/repo-name.git
