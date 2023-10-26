@@ -30,4 +30,4 @@ jobs:
             echo "Set the GITHUB_TOKEN secret in your repository."
             exit 1
           fi
-          npx angular-cli-ghpages --dir=dist/ecom-admin-panel # Replace with your app name
+          npx angular-cli-ghpages --dir=dist/ecom-admin-panel --no-silent # Replace with your app name
