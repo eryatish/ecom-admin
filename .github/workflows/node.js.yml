@@ -1,4 +1,4 @@
-name: Angular Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 18
+        node-version: 18  # Use the Node.js version required by your Angular project
 
     - name: Install dependencies
       run: npm install
@@ -26,24 +26,9 @@ jobs:
 
     - name: Deploy to GitHub Pages
       run: |
-        mkdir gh-pages
-        cp -r dist/* gh-pages/
-        cd gh-pages
-        git init
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor }}@users.noreply.github.com"
-        git add .
-        git commit -m "Deployed from GitHub Actions"
-        git branch -M main  # Ensure we are on the main branch
-        git remote add origin https://${{ github.token }}@github.com/${{ github.repository }}.git
-        git push -u origin main:gh-pages
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@users.noreply.github.com"
+        npx angular-cli-ghpages --dir=dist/your-angular-app-name
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Remove installed dependencies
-      run: rm -rf node_modules
-
-    - name: Cleanup
-      run: |
-        rm -rf gh-pages
-      if: success()
