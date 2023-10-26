@@ -28,7 +28,7 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@users.noreply.github.com"
-        npx angular-cli-ghpages --dir=dist/your-angular-app-name
+        npx angular-cli-ghpages --dir=dist/ecom-admin
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
