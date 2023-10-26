@@ -26,8 +26,8 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          if [ -z "${GITHUB_TOKEN}" ]; then
-            echo "Set the GITHUB_TOKEN secret in your repository."
+          if [ -z "${SGITHUB_TOKEN}" ]; then
+            echo "Set the SGITHUB_TOKEN secret in your repository."
             exit 1
           fi
           npx angular-cli-ghpages --dir=dist/ecom-admin-panel # Replace with your app name
