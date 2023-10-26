@@ -30,7 +30,7 @@ jobs:
             echo "Set the GITHUB_TOKEN secret in your repository."
             exit 1
           fi
-          git config --global url.https://${{secrets.GITHUB_ACTIONS}}@github.com/
+          git config --global url.https://${{GITHUB_ACTIONS}}@github.com/
           git config user.email "er.yatish@gmail.com"
           git config user.name "eryatish"
           # git config --global credential.helper store
