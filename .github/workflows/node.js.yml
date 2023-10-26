@@ -33,6 +33,6 @@ jobs:
           git config --global user.email "er.yatish@gmail.com"
           git config --global user.name "eryatish"
           git config --global credential.helper store
-          echo ${{secrets.GITHUB_ACTIONS}}
+          echo ${GITHUB_ACTIONS}
           # git remote add origin https://username:${{secrets.GITHUB_TOKEN}}@github.com/username/repo-name.git
           npx angular-cli-ghpages --dir=dist/ecom-admin-panel --no-silent # Replace with your app name
